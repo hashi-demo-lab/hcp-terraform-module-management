@@ -27,7 +27,7 @@ on:
       skip_tests:
         description: 'Skip unit tests'
         required: false
-        default: 'false'
+        default: false
         type: boolean
 
 permissions:
@@ -205,7 +205,7 @@ jobs:
             | Examples | ${{ steps.validate_examples.outcome == 'success' && '✅' || '❌' }} |
             | TFLint | ${{ steps.tflint.outcome == 'success' && '✅' || '⚠️' }} |
             | Security | ${{ steps.trivy.outcome == 'success' && '✅' || '⚠️' }} |
-            | Unit Tests | ${{ steps.test.outcome == 'success' && '✅' || (steps.test.outcome == 'skipped' ? '⏭️' : '❌') }} |
+            | Unit Tests | ${{ steps.test.outcome == 'success' && '✅' || (steps.test.outcome == 'skipped' && '⏭️' || '❌') }} |
 
             [View full details](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
             `;
